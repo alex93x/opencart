@@ -91,7 +91,7 @@ build: ## Build images. Use 'options' for flags (e.g., --no-cache)
 	@echo "Building images for user: $(CURRENT_USER_NAME) (ID: $(CURRENT_USER_ID))"
 	$(COMPOSE) build \
 		--build-arg PHP_UNAME="$(CURRENT_USER_NAME)" \
-        --build-arg PHP_UID="$(CURRENT_USER_ID)" \
+		--build-arg PHP_UID="$(CURRENT_USER_ID)" \
 		$(options)
 
 up: ## Start services. Use 'profiles' and 'options'

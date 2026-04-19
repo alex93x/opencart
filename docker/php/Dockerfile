@@ -27,8 +27,8 @@ RUN install-php-extensions \
     zip
 
 # Configure user home directory
-ARG PHP_UNAME
-ARG PHP_UID
+ARG PHP_UNAME=www-data
+ARG PHP_UID=33
 ENV PHP_UNAME=${PHP_UNAME}
 ENV PHP_UID=${PHP_UID}
 
