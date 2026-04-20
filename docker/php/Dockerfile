@@ -32,8 +32,10 @@ ARG PHP_UID=33
 ENV PHP_UNAME=${PHP_UNAME}
 ENV PHP_UID=${PHP_UID}
 
-RUN useradd -m -G www-data,root -u $PHP_UID -d /home/$PHP_UNAME $PHP_UNAME && \
-    chown -R $PHP_UNAME:www-data /var/www && \
+RUN if ! id -u "$PHP_UNAME" >/dev/null 2>&1; then \
+        useradd -m -G www-data,root -u "$PHP_UID" -d "/home/$PHP_UNAME" "$PHP_UNAME"; \
+    fi && \
+    chown -R "$PHP_UNAME":www-data /var/www && \
     chmod -R g+w /var/www
 
 ENV HOME=/home/$PHP_UNAME
